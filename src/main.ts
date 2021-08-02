@@ -114,6 +114,7 @@ abstract class Main {
 
             // change icon and toggle kill switch
             Main.menu.getMenuItemById("chrome")!.enabled = !!chromeParentProcessID;
+            Main.tray.setToolTip(chromeParentProcessID ? "Chrome is running" : "Chrome is not running");
             Main.tray.setImage(chromeParentProcessID ? red : green);
         });
     }
@@ -123,7 +124,6 @@ abstract class Main {
             const index = dialog.showMessageBoxSync({
                 title: name,
                 message: "Are you sure you want to stop chrome?",
-                icon,
                 type: "warning",
                 buttons: ["Yes", "No"],
                 defaultId: 1,
@@ -131,12 +131,11 @@ abstract class Main {
                 noLink: true // force Electron to use above options
             });
 
-            if(index == 0){ // [Yes]
+            if(index == 0)// [Yes]
                 process.kill(Main.chromeProcessID);
-                Main.menu.getMenuItemById("chrome")!.enabled = false;
-            }
-        }else // chrome wasn't running, disable the kill switch
-            Main.menu.getMenuItemById("chrome")!.enabled = false;
+        }
+
+        Main.checkChromeProcess();
     }
 
     private static getProcess(processes: task[], pid: number): task | null {

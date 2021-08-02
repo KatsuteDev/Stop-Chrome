@@ -17,7 +17,7 @@ Chrome Can You Not (CCYN) is a desktop application that displays an indicator in
 
 <div align="center">
     <a href="https://github.com/KatsuteDev/Chrome-Can-You-Not">
-        <img src="https://raw.githubusercontent.com/KatsuteDev/Chrome-Can-You-Not/main/sample.gif" alt="sample" width="750">
+        <img src="https://raw.githubusercontent.com/KatsuteDev/Chrome-Can-You-Not/main/sample.png" alt="sample">
     </a>
 </div>
 
@@ -28,7 +28,7 @@ Chrome Can You Not (CCYN) is a desktop application that displays an indicator in
      - Installer installs into `AppData/Local/Chrome-Can-You-Not`
  3. Run `Chrome-Can-You-Not.exe`
 
-### Contributing
+# Contributing
 
 - Build using `npm run build` or `npm run prepare`
 - Test builds using `npm run start:dev`

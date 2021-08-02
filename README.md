@@ -15,14 +15,18 @@
 Google Chrome has an awful issue where when you close it, it still runs in the background, even when the setting is turned off!
 Chrome Can You Not (CCYN) is a desktop application that displays an indicator in the system tray, telling you whether Chrome is running or not, and allows you to quickly stop chrome running in the background.
 
-*< insert image >*
+<div align="center">
+    <a href="https://github.com/KatsuteDev/Chrome-Can-You-Not">
+        <img src="https://raw.githubusercontent.com/KatsuteDev/Chrome-Can-You-Not/main/sample.gif" alt="sample" width="750">
+    </a>
+</div>
 
 # Setup
 
  1. Download the latest release: [![version](https://img.shields.io/github/v/release/KatsuteDev/Chrome-Can-You-Not)](https://github.com/KatsuteDev/Chrome-Can-You-Not/releases)
  2. Either run the installer or extract the zip into the desired directory
      - Installer installs into `AppData/Local/Chrome-Can-You-Not`
- 3. Run `CCYN.exe`
+ 3. Run `Chrome-Can-You-Not.exe`
 
 ### Contributing
 

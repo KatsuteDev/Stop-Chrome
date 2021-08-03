@@ -26,7 +26,7 @@ Chrome Can You Not (CCYN) is a desktop application that displays an indicator in
  1. Download the latest release: [![version](https://img.shields.io/github/v/release/KatsuteDev/Chrome-Can-You-Not)](https://github.com/KatsuteDev/Chrome-Can-You-Not/releases)
  2. Either run the installer or extract the zip into the desired directory
      - Installer installs into `AppData/Local/Chrome-Can-You-Not`
- 3. Run `Chrome-Can-You-Not.exe`
+ 3. Run `Chrome Can You Not.exe`
 
 # Contributing
 

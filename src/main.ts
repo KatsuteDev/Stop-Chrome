@@ -98,7 +98,13 @@ abstract class Main {
 
     }
 
+    private static isChecking: boolean = false;
+
     private static checkChromeProcess(): void {
+        if(this.isChecking)
+            return;
+        else
+            this.isChecking = true;
         snapshot("name", "pid", "ppid").then((tasks: any[]) => {
             let chromeParentProcessID: number | null = null;
             for(const task of (tasks as task[])){
@@ -116,6 +122,8 @@ abstract class Main {
             Main.menu.getMenuItemById("chrome")!.enabled = !!chromeParentProcessID;
             Main.tray.setToolTip(chromeParentProcessID ? "Chrome is running" : "Chrome is not running");
             Main.tray.setImage(chromeParentProcessID ? red : green);
+        }).finally(() => {
+            this.isChecking = false;
         });
     }
 

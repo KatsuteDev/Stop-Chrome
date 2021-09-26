@@ -33,11 +33,11 @@ type task = {
 
 // ----- main ---------------
 
-const name: string = "Chrome Can You Not"
+const name: string = "Chrome Can You Not";
 
-const icon: string = path.join(__dirname, "../", "icon.png");
+const icon : string = path.join(__dirname, "../", "icon.png");
 const green: string = path.join(__dirname, "../", "state_green.png");
-const red: string = path.join(__dirname, "../", "state_red.png");
+const red  : string = path.join(__dirname, "../", "state_red.png");
 
 abstract class Main {
 
@@ -140,8 +140,10 @@ abstract class Main {
                 noLink: true // force Electron to use above options
             });
 
-            if(index == 0)// [Yes]
-                process.kill(Main.chromeProcessID);
+            if(index == 0) // [Yes]
+                try{
+                    process.kill(Main.chromeProcessID);
+                }catch(error: any){ }
         }
 
         Main.checkChromeProcess();

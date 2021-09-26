@@ -54,6 +54,7 @@ abstract class Main {
             Main.tray = new Tray(green);
             Main.tray.setToolTip(name);
             Main.tray.setImage(icon);
+            Main.tray.on("click", () => Main.tray.popUpContextMenu());
             Main.tray.setContextMenu(Main.menu = Menu.buildFromTemplate([
                 {
                     label: name,

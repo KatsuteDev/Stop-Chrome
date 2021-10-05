@@ -3,9 +3,8 @@
         <img src="https://raw.githubusercontent.com/KatsuteDev/Chrome-Can-You-Not/main/icon.png" alt="icon" width="100" height="100">
     </a>
     <h3>CCYN - Chrome Can You Not</h3>
-    <a href="https://github.com/KatsuteDev/Chrome-Can-You-Not/actions/workflows/npm_ci.yml"><img src="https://github.com/KatsuteDev/Chrome-Can-You-Not/workflows/npm%20CI/badge.svg" title="npm CI"></a>
-    <a href="https://github.com/KatsuteDev/Chrome-Can-You-Not/actions/workflows/codeql.yml"><img src="https://github.com/KatsuteDev/Chrome-Can-You-Not/workflows/CodeQL/badge.svg" title="CodeQL"></a>
-    <a href="https://github.com/KatsuteDev/Chrome-Can-You-Not/actions/workflows/deploy.yml"><img src="https://github.com/KatsuteDev/Chrome-Can-You-Not/workflows/Deploy/badge.svg" title="Deploy"></a>
+    <a href="https://github.com/KatsuteDev/Chrome-Can-You-Not/actions/workflows/npm_ci.yml"><img src="https://github.com/KatsuteDev/Chrome-Can-You-Not/actions/workflows/npm_ci.yml/badge.svg" title="npm CI"></a>
+    <a href="https://github.com/KatsuteDev/Chrome-Can-You-Not/actions/workflows/deploy.yml"><img src="https://github.com/KatsuteDev/Chrome-Can-You-Not/actions/workflows/deploy.yml/badge.svg" title="Deploy"></a>
     <a href="https://github.com/KatsuteDev/Chrome-Can-You-Not/releases"><img title="version" src="https://img.shields.io/github/v/release/KatsuteDev/Chrome-Can-You-Not"></a>
     <a href="https://github.com/KatsuteDev/Chrome-Can-You-Not/blob/main/LICENSE"><img title="license" src="https://img.shields.io/github/license/KatsuteDev/Chrome-Can-You-Not"></a>
 </div>

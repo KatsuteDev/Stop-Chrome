@@ -87,12 +87,6 @@ abstract class Main {
                 }
             ]));
 
-            new Notification({
-                title: name,
-                body: `${name} is now running. Right click the tray icon to access options.`,
-                icon
-            }).show();
-
             Main.checkChromeProcess();
             setInterval(Main.checkChromeProcess, 10 * 1000); // poll every 10 seconds
         });

@@ -16,7 +16,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-import { app, dialog, Menu, nativeImage, Notification, Tray } from "electron";
+import { app, dialog, Menu, nativeImage, Tray } from "electron";
 
 // @ts-ignore (no types available)
 import { snapshot } from "process-list";

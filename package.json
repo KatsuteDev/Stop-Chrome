@@ -1,7 +1,8 @@
 {
-    "name": "chrome-can-you-not",
-    "version": "1.1.0",
+    "name": "stop-chrome",
+    "version": "2.0.0",
     "description": "Detect and stop chrome from running in the background",
+    "private": true,
     "main": "dist/main.js",
     "scripts": {
         "// -- dev -- //": "",
@@ -25,23 +26,23 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/KatsuteDev/Chrome-Can-You-Not.git"
+        "url": "git+https://github.com/KatsuteDev/Stop-Chrome.git"
     },
     "author": "Katsute",
     "license": "GPL-2.0",
     "bugs": {
-        "url": "https://github.com/KatsuteDev/Chrome-Can-You-Not/issues"
+        "url": "https://github.com/KatsuteDev/Stop-Chrome/issues"
     },
-    "homepage": "https://github.com/KatsuteDev/Chrome-Can-You-Not#readme",
+    "homepage": "https://github.com/KatsuteDev/Stop-Chrome#readme",
     "devDependencies": {
         "@electron-forge/cli": "^6.0.0-beta.61",
         "@electron-forge/maker-squirrel": "^6.0.0-beta.61",
         "@electron-forge/maker-zip": "^6.0.0-beta.61",
         "copyfiles": "^2.4.1",
-        "electron": "^15.2.0",
+        "electron": "^16.0.6",
         "electron-rebuild": "^3.2.5",
         "rimraf": "^3.0.2",
-        "typescript": "^4.5.2"
+        "typescript": "^4.5.4"
     },
     "dependencies": {
         "electron-squirrel-startup": "^1.0.0",
@@ -50,9 +51,9 @@
     "config": {
         "forge": {
             "packagerConfig": {
-                "name": "Chrome Can You Not",
+                "name": "Stop Chrome",
                 "icon": "icon.ico",
-                "appCopyright": "© Katsute 2021",
+                "appCopyright": "© Katsute 2022",
                 "ignore": [
                     "^/\\.github",
                     "^/src",
@@ -64,7 +65,7 @@
                 {
                     "name": "@electron-forge/maker-squirrel",
                     "config": {
-                        "name": "Chrome-Can-You-Not",
+                        "name": "Stop Chrome",
                         "setupIcon": "icon.ico",
                         "loadingGif": "installer.gif"
                     }

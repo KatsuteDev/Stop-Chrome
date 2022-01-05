@@ -44,4 +44,4 @@ Stop Chrome is a desktop application that displays an indicator in the system tr
 
 ### License
 
-This library is released under the [GNU General Public License (GPL) v2.0](https://github.com/KatsuteDev/Stop-Chrome/blob/main/LICENSE).
+This software is released under the [GNU General Public License (GPL) v2.0](https://github.com/KatsuteDev/Chrome-Can-You-Not/blob/main/LICENSE).

@@ -44,4 +44,4 @@ Chrome Can You Not (CCYN) is a desktop application that displays an indicator in
 
 ### License
 
-This library is released under the [GNU General Public License (GPL) v2.0](https://github.com/KatsuteDev/Chrome-Can-You-Not/blob/main/LICENSE).
+This software is released under the [GNU General Public License (GPL) v2.0](https://github.com/KatsuteDev/Chrome-Can-You-Not/blob/main/LICENSE).

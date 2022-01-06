@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Katsute
+ * Copyright (C) 2021-2022 Katsute
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -33,7 +33,8 @@ type task = {
 
 // ----- main ---------------
 
-const name: string = "Chrome Can You Not";
+const name: string = "Stop Chrome";
+const version: string = "2.0.0";
 
 const icon : string = path.join(__dirname, "../", "icon.png");
 const green: string = path.join(__dirname, "../", "state_green.png");
@@ -57,7 +58,7 @@ abstract class Main {
             Main.tray.on("click", () => Main.tray.popUpContextMenu());
             Main.tray.setContextMenu(Main.menu = Menu.buildFromTemplate([
                 {
-                    label: name,
+                    label: `${name} v${version}`,
                     type: "normal",
                     icon: nativeImage.createFromPath(icon).resize({width: 16, height: 16}),
                     enabled: false

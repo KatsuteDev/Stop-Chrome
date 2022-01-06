@@ -65,7 +65,7 @@
                 {
                     "name": "@electron-forge/maker-squirrel",
                     "config": {
-                        "name": "Stop Chrome",
+                        "name": "Stop-Chrome",
                         "setupIcon": "icon.ico",
                         "loadingGif": "installer.gif"
                     }

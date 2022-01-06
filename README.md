@@ -38,9 +38,9 @@ Stop Chrome is a desktop application that displays an indicator in the system tr
 </table>
 <!-- GitHub Copilot Disclaimer -->
 
-- Build using `npm run build` or `npm run prepare`. Make sure to run `npm run rebuild` first.
-- Test builds using `npm run start:dev`
-- Package builds using `npm run make`
+ - Build using `npm run build` or `npm run prepare`. Make sure to run `npm run rebuild` first.
+ - Test builds using `npm run start:dev`
+ - Package builds using `npm run make`
 
 ### License
 

@@ -9,6 +9,7 @@ jobs:
     name: Deploy
     uses: Katsute/Workflows/.github/workflows/npm.electron.deploy.yml@main
     with:
+      os: windows-2019
       environment: Electron Make
     secrets:
       token: ${{ secrets.GITHUB_TOKEN }}

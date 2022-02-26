@@ -17,14 +17,13 @@
  */
 
 import { app, dialog, Menu, nativeImage, Tray } from "electron";
-import ps from 'ps-node';
 
+import { exec } from 'child_process';
 import path from "path";
 
-type task = {
+type process = {
 
-    arguments: string[];
-    command: string;
+    name: string;
     pid: number;
     ppid: number;
 
@@ -101,32 +100,28 @@ abstract class Main {
         else
             this.isChecking = true;
 
-        console.info("looking up...");
-        Main.lookup({command: "\\\\chrome.exe"})
-            .then(processes => { // ↑ weird slash mismatch with command field ↙
-                let chromePPID: number | null = null;
+        Main.lookup()
+            .then(processes => {
+                let chromePID: number | null = null;
                 for(const process of processes){
-                    if(process.command.endsWith("\\chrome.exe")){ // look for chrome process
-                        // look for chrome parent process
-                        const parentProcess: task | null = Main.find(processes, process.ppid);
-                        if(parentProcess && parentProcess.command.endsWith("\\chrome.exe")){
-                            chromePPID = parentProcess.ppid;
+                    if(process.name == "chrome.exe"){ // verify process is chrome
+                        const parentProcess: process | null = Main.find(processes, process.ppid);
+                        if(parentProcess && parentProcess.name == "chrome.exe"){ // reverify parent is chrome
+                            chromePID = parentProcess.pid;
                             break;
                         }
                     }
                 }
-                Main.chromePID = chromePPID;
+                Main.chromePID = chromePID;
 
                 // change icon and toggle kill switch
-                Main.menu.getMenuItemById("chrome")!.enabled = !!chromePPID;
-                Main.tray.setToolTip(`Chrome is${chromePPID ? "" : " not"} running`);
-                Main.tray.setImage(chromePPID ? red : green);
+                Main.menu.getMenuItemById("chrome")!.enabled = !!chromePID;
+                Main.tray.setToolTip(`Chrome is${chromePID ? "" : " not"} running`);
+                Main.tray.setImage(chromePID ? red : green);
             })
             .finally(() => {
-                console.info("done");
                 this.isChecking = false;
             });
-        console.info("pass promise");
     }
 
     private static endChromeProcess(): void {
@@ -150,18 +145,40 @@ abstract class Main {
         Main.checkChromeProcess();
     }
 
-    private static lookup(query: ps.Query): Promise<task[]> {
+    private static lookup(): Promise<process[]> {
         return new Promise((resolve: any, reject: any) => {
-            ps.lookup(query, (err, processes) => {
+            exec(`wmic process where name="chrome.exe" get processid,parentprocessid,name`, (err, stdout, stderr) => {
                 if(err)
                     reject(err);
-                else
-                    resolve(processes as task[]);
+                else{
+                    let iname: number | null = null;
+                    let ipid : number | null = null;
+                    let ippid: number | null = null;
+
+                    const processes: process[] = [];
+                    for(const line of stdout.trim().split(/\r*\n/)){
+                        const values: string[] = line.trim().split(/\s+/);
+                        // header indexes
+                        if(iname == null || ipid == null || ippid == null){
+                            iname = values.indexOf("Name");
+                            ipid  = values.indexOf("ProcessId");
+                            ippid = values.indexOf("ParentProcessId");
+                        }else // processes
+                            processes.push({
+                                name: values[iname],
+                                pid : parseInt(values[ipid]),
+                                ppid: parseInt(values[ippid])
+                            });
+                    }
+                    resolve(processes);
+                }
+                resolve([]);
             });
+
         });
     }
 
-    private static find(processes: task[], pid: number): task | null {
+    private static find(processes: process[], pid: number): process | null {
         for(const process of processes)
             if(process.pid == pid)
                 return process;

@@ -37,10 +37,8 @@
         "@electron-forge/cli": "6.0.0-beta.63",
         "@electron-forge/maker-squirrel": "6.0.0-beta.63",
         "@electron-forge/maker-zip": "6.0.0-beta.63",
-        "@types/ps-node": "0.1.1",
         "copyfiles": "2.4.1",
         "electron": "16.0.10",
-        "ps-node": "0.1.6",
         "rimraf": "3.0.2",
         "typescript": "4.5.5"
     },

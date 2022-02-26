@@ -1,6 +1,6 @@
 {
     "name": "stop-chrome",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "description": "Detect and stop chrome from running in the background",
     "private": true,
     "main": "dist/main.js",
@@ -10,12 +10,11 @@
         "prune": "npm prune && npm i --package-lock --ignore-scripts",
         "update": "npm update -D && npm i --package-lock --ignore-scripts && npm run prune",
         "// -- build -- //": "",
-        "rebuild": "electron-rebuild",
         "build:typescript": "tsc --outDir dist",
         "build": "npm run build:typescript",
         "prepare": "npm run clean && npm run build",
         "// -- run -- //": "",
-        "start:dev": "npm run clean && npm run build && electron .",
+        "start:dev": "npm run prepare && electron .",
         "start:forge": "npm run prepare && electron-forge start",
         "start": "electron-forge start",
         "// -- test -- //": "",
@@ -38,15 +37,15 @@
         "@electron-forge/cli": "6.0.0-beta.63",
         "@electron-forge/maker-squirrel": "6.0.0-beta.63",
         "@electron-forge/maker-zip": "6.0.0-beta.63",
+        "@types/ps-node": "0.1.1",
         "copyfiles": "2.4.1",
         "electron": "16.0.10",
-        "electron-rebuild": "3.2.7",
+        "ps-node": "0.1.6",
         "rimraf": "3.0.2",
         "typescript": "4.5.5"
     },
     "dependencies": {
-        "electron-squirrel-startup": "1.0.0",
-        "process-list": "2.0.0"
+        "electron-squirrel-startup": "1.0.0"
     },
     "config": {
         "forge": {

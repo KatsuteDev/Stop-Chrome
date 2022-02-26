@@ -17,15 +17,14 @@
  */
 
 import { app, dialog, Menu, nativeImage, Tray } from "electron";
-
-// @ts-ignore (no types available)
-import { snapshot } from "process-list";
+import ps from 'ps-node';
 
 import path from "path";
 
 type task = {
 
-    name: string;
+    arguments: string[];
+    command: string;
     pid: number;
     ppid: number;
 
@@ -34,7 +33,7 @@ type task = {
 // ----- main ---------------
 
 const name: string = "Stop Chrome";
-const version: string = "2.0.0";
+const version: string = "2.0.1";
 
 const icon : string = path.join(__dirname, "../", "icon.png");
 const green: string = path.join(__dirname, "../", "state_green.png");
@@ -45,13 +44,13 @@ abstract class Main {
     public static tray: Tray;
     private static menu: Menu;
 
-    private static chromeProcessID: number | null = null;
+    private static chromePID: number | null = null;
 
     public static async main(): Promise<void> {
         if(require('electron-squirrel-startup') || !app.requestSingleInstanceLock())
             return app.quit();
 
-        app.once("ready", (event: Electron.Event, launchInfo: Record<string,any> | Electron.NotificationResponse) => {
+        app.once("ready", () => {
             Main.tray = new Tray(green);
             Main.tray.setToolTip(name);
             Main.tray.setImage(icon);
@@ -101,30 +100,37 @@ abstract class Main {
             return;
         else
             this.isChecking = true;
-        snapshot("name", "pid", "ppid").then((tasks: any[]) => {
-            let chromeParentProcessID: number | null = null;
-            for(const task of (tasks as task[])){
-                if(task.name == "chrome.exe"){ // find chrome subprocess
-                    const parentProcess: task | null = Main.getProcess(tasks as task[], task.ppid);
-                    if(parentProcess && parentProcess.name == "chrome.exe"){ // find chrome parent process
-                        chromeParentProcessID = task.ppid;
-                        break;
+
+        console.info("looking up...");
+        Main.lookup({command: "\\\\chrome.exe"})
+            .then(processes => { // ↑ weird slash mismatch with command field ↙
+                let chromePPID: number | null = null;
+                for(const process of processes){
+                    if(process.command.endsWith("\\chrome.exe")){ // look for chrome process
+                        // look for chrome parent process
+                        const parentProcess: task | null = Main.find(processes, process.ppid);
+                        if(parentProcess && parentProcess.command.endsWith("\\chrome.exe")){
+                            chromePPID = parentProcess.ppid;
+                            break;
+                        }
                     }
                 }
-            }
-            Main.chromeProcessID = chromeParentProcessID;
+                Main.chromePID = chromePPID;
 
-            // change icon and toggle kill switch
-            Main.menu.getMenuItemById("chrome")!.enabled = !!chromeParentProcessID;
-            Main.tray.setToolTip(chromeParentProcessID ? "Chrome is running" : "Chrome is not running");
-            Main.tray.setImage(chromeParentProcessID ? red : green);
-        }).finally(() => {
-            this.isChecking = false;
-        });
+                // change icon and toggle kill switch
+                Main.menu.getMenuItemById("chrome")!.enabled = !!chromePPID;
+                Main.tray.setToolTip(`Chrome is${chromePPID ? "" : " not"} running`);
+                Main.tray.setImage(chromePPID ? red : green);
+            })
+            .finally(() => {
+                console.info("done");
+                this.isChecking = false;
+            });
+        console.info("pass promise");
     }
 
     private static endChromeProcess(): void {
-        if(Main.chromeProcessID){
+        if(Main.chromePID){
             const index = dialog.showMessageBoxSync({
                 title: name,
                 message: "Are you sure you want to stop chrome?",
@@ -137,14 +143,25 @@ abstract class Main {
 
             if(index == 0) // [Yes]
                 try{
-                    process.kill(Main.chromeProcessID);
-                }catch(error: any){ }
+                    process.kill(Main.chromePID);
+                }catch(error: any){}
         }
 
         Main.checkChromeProcess();
     }
 
-    private static getProcess(processes: task[], pid: number): task | null {
+    private static lookup(query: ps.Query): Promise<task[]> {
+        return new Promise((resolve: any, reject: any) => {
+            ps.lookup(query, (err, processes) => {
+                if(err)
+                    reject(err);
+                else
+                    resolve(processes as task[]);
+            });
+        });
+    }
+
+    private static find(processes: task[], pid: number): task | null {
         for(const process of processes)
             if(process.pid == pid)
                 return process;
@@ -159,6 +176,7 @@ process.on("unhandledRejection", (error: Error, promise) => {
         if(Main.tray)
             Main.tray.destroy();
         app.quit();
+        process.exit(-1);
     }
 });
 
@@ -168,5 +186,6 @@ Main.main().catch((error: Error) => {
         if(Main.tray)
             Main.tray.destroy();
         app.quit();
+        process.exit(-1);
     }
 });

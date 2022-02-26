@@ -147,7 +147,10 @@ abstract class Main {
 
     private static lookup(): Promise<process[]> {
         return new Promise((resolve: any, reject: any) => {
-            exec(`wmic process where name="chrome.exe" get processid,parentprocessid,name`, (err, stdout, stderr) => {
+            // ⚠ wmic is deprecated
+            // cmd: wmic process where name="chrome.exe" get processid,parentprocessid,name
+            // ps:  Get-CimInstance -Class Win32_Process -Filter "Name='chrome.exe'" | Select-Object Name,ProcessId,ParentProcessId
+            exec(`Get-CimInstance -Class Win32_Process -Filter "Name='chrome.exe'" | Select-Object Name,ProcessId,ParentProcessId`, {shell: "powershell.exe"}, (err, stdout, stderr) => {
                 if(err)
                     reject(err);
                 else{
@@ -163,7 +166,7 @@ abstract class Main {
                             iname = values.indexOf("Name");
                             ipid  = values.indexOf("ProcessId");
                             ippid = values.indexOf("ParentProcessId");
-                        }else // processes
+                        }else if(!values[0].startsWith('-') && !values[1].startsWith('-') && !values[2].startsWith('-')) // processes
                             processes.push({
                                 name: values[iname],
                                 pid : parseInt(values[ipid]),

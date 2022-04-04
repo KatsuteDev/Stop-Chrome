@@ -32,7 +32,7 @@ type process = {
 // ----- main ---------------
 
 const name: string = "Stop Chrome";
-const version: string = "2.0.1";
+const version: string = "2.0.2";
 
 const icon : string = path.join(__dirname, "../", "icon.png");
 const green: string = path.join(__dirname, "../", "state_green.png");

@@ -1,10 +1,10 @@
 ### Prerequisites
-*If checks are not passed then the pull request will be closed.*
+*Issues must meet the following criteria:*
 
- - [ ] I have checked that no other similar pull request already exists.
- - [ ] My code follows the general code style as the rest of the code.
- - [ ] I have added relevant comments.
- - [ ] Build compiles.
+ - [ ] No similar [pull request](https://github.com/KatsuteDev/Stop-Chrome/pulls) exists.
+ - [ ] Code follows the general code style of this project.
+ - [ ] No sensitive information is exposed.
+ - [ ] Relevant comments have been added.
 
 ### GitHub Copilot Disclaimer
 *The use of GitHub Copilot is **strictly prohibited** on this repository.*
@@ -14,4 +14,4 @@
 ### Changes Made
 *List any changes made and/or other relevant issues.*
 
- - 
+ -

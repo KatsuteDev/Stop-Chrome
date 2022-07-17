@@ -8,7 +8,7 @@
 
 <br>
 
-Google Chrome has an awful issue where when you close it, it still runs in the background, even when the setting is turned off!
+Google Chrome has an issue where when you close it, it still runs in the background, even when background apps and refresh are turned off.
 Stop Chrome is a desktop application that displays an indicator in the system tray, telling you whether Chrome is running or not, and allows you to quickly stop chrome running in the background.
 
 <div align="center">
@@ -21,10 +21,10 @@ Stop Chrome is a desktop application that displays an indicator in the system tr
 
  > ⚠️ Running this application may trigger your Antivirus. This is a FALSE POSITIVE. Add this application to the exception list if you don't want to see alerts.
 
- 1. Download the latest release: [![version](https://img.shields.io/github/v/release/KatsuteDev/Stop-Chrome)](https://github.com/KatsuteDev/Stop-Chrome/releases)
- 2. Either run the installer or extract the zip into the desired directory
-     - Installer installs into `AppData/Local/Stop-Chrome`
- 3. Run `Stop Chrome.exe`
+ 1. Download the latest release: [![version](https://img.shields.io/github/v/release/KatsuteDev/Stop-Chrome)](https://github.com/KatsuteDev/Stop-Chrome/releases).
+ 2. Either run the installer or extract the zip into the desired directory.
+     - Installer installs into `AppData/Local/Stop-Chrome`.
+ 3. Run `Stop Chrome.exe`.
 
 ### 👨‍💻 Contributing
 
@@ -36,8 +36,8 @@ Stop Chrome is a desktop application that displays an indicator in the system tr
 <!-- GitHub Copilot Disclaimer -->
 
  - Build using `npm run build` or `npm run prepare`. Make sure to run `npm run rebuild` first.
- - Test builds using `npm run start:dev`
- - Package builds using `npm run make`
+ - Test builds using `npm run start:dev`.
+ - Package builds using `npm run make`.
 
 ### 💼 License
 

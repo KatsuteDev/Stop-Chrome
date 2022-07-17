@@ -32,11 +32,13 @@ type process = {
 // ----- main ---------------
 
 const name: string = "Stop Chrome";
-const version: string = "2.0.2";
+const version: string = "2.0.3";
 
 const icon : string = path.join(__dirname, "../", "icon.png");
 const green: string = path.join(__dirname, "../", "state_green.png");
 const red  : string = path.join(__dirname, "../", "state_red.png");
+
+const delay: number = 60; // in seconds
 
 abstract class Main {
 
@@ -54,6 +56,7 @@ abstract class Main {
             Main.tray.setToolTip(name);
             Main.tray.setImage(icon);
             Main.tray.on("click", () => Main.tray.popUpContextMenu());
+            Main.tray.on("mouse-move", Main.checkChromeProcess);
             Main.tray.setContextMenu(Main.menu = Menu.buildFromTemplate([
                 {
                     label: `${name} v${version}`,
@@ -87,7 +90,7 @@ abstract class Main {
             ]));
 
             Main.checkChromeProcess();
-            setInterval(Main.checkChromeProcess, 10 * 1000); // poll every 10 seconds
+            setInterval(Main.checkChromeProcess, delay * 1000);
         });
 
     }
@@ -95,10 +98,9 @@ abstract class Main {
     private static isChecking: boolean = false;
 
     private static checkChromeProcess(): void {
-        if(this.isChecking)
-            return;
-        else
-            this.isChecking = true;
+        if(Main.isChecking) return;
+
+        Main.isChecking = true;
 
         Main.lookup()
             .then(processes => {
@@ -120,7 +122,7 @@ abstract class Main {
                 Main.tray.setImage(chromePID ? red : green);
             })
             .finally(() => {
-                this.isChecking = false;
+                Main.isChecking = false;
             });
     }
 
@@ -139,10 +141,15 @@ abstract class Main {
             if(index == 0) // [Yes]
                 try{
                     process.kill(Main.chromePID);
-                }catch(error: any){}
+                }catch(error: any){
+                }finally{
+                    for(let i = 0; i <= 10; i+=2)
+                        if(Main.chromePID)
+                            setTimeout(Main.checkChromeProcess, i * 1000);
+                        else
+                            break;
+                }
         }
-
-        Main.checkChromeProcess();
     }
 
     private static lookup(): Promise<process[]> {

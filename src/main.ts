@@ -144,10 +144,10 @@ abstract class Main {
                 }catch(error: any){
                 }finally{
                     for(let i = 0; i <= 10; i+=2)
-                        if(Main.chromePID)
-                            setTimeout(Main.checkChromeProcess, i * 1000);
-                        else
-                            break;
+                        setTimeout(() => {
+                            if(Main.chromePID)
+                                Main.checkChromeProcess();
+                        }, i * 1000);
                 }
         }
     }

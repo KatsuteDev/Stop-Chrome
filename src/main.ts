@@ -18,7 +18,7 @@
 
 import { app, dialog, Menu, nativeImage, Tray } from "electron";
 
-import { exec } from 'child_process';
+import { exec } from "child_process";
 import path from "path";
 
 type process = {
@@ -32,13 +32,15 @@ type process = {
 // ----- main ---------------
 
 const name: string = "Stop Chrome";
-const version: string = "2.0.3";
+const version: string = "2.0.4";
 
-const icon : string = path.join(__dirname, "../", "icon.png");
-const green: string = path.join(__dirname, "../", "state_green.png");
-const red  : string = path.join(__dirname, "../", "state_red.png");
+const icon : string = path.join(__dirname, "../", "assets", "icon.png");
+const green: string = path.join(__dirname, "../", "assets", "state_green.png");
+const red  : string = path.join(__dirname, "../", "assets", "state_red.png");
 
-const delay: number = 60; // in seconds
+// in seconds
+const delay: number = 60; // loop
+const timeout: number = 10; // exec timeout
 
 abstract class Main {
 
@@ -157,10 +159,8 @@ abstract class Main {
             // ⚠ wmic is deprecated
             // cmd: wmic process where name="chrome.exe" get processid,parentprocessid,name
             // ps:  Get-CimInstance -Class Win32_Process -Filter "Name='chrome.exe'" | Select-Object Name,ProcessId,ParentProcessId
-            exec(`Get-CimInstance -Class Win32_Process -Filter "Name='chrome.exe'" | Select-Object Name,ProcessId,ParentProcessId`, {shell: "powershell.exe"}, (err, stdout, stderr) => {
-                if(err)
-                    reject(err);
-                else{
+            exec(`Get-CimInstance -Class Win32_Process -Filter "Name='chrome.exe'" | Select-Object Name,ProcessId,ParentProcessId`, {shell: "powershell.exe", timeout: 1000 * timeout}, (err, stdout, stderr) => {
+                if(!err){
                     let iname: number | null = null;
                     let ipid : number | null = null;
                     let ippid: number | null = null;

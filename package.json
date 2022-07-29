@@ -1,12 +1,12 @@
 {
     "name": "stop-chrome",
-    "version": "2.0.3",
+    "version": "2.0.4",
     "description": "Detect and stop chrome from running in the background",
     "private": true,
     "main": "dist/main.js",
     "scripts": {
         "// -- dev -- //": "",
-        "clean": "rimraf dist",
+        "clean": "rimraf dist & rimraf out",
         "prune": "npm prune && npm i --package-lock --ignore-scripts",
         "update": "npm update -D && npm i --package-lock --ignore-scripts && npm run prune",
         "// -- build -- //": "",
@@ -37,7 +37,7 @@
         "@electron-forge/cli": "6.0.0-beta.65",
         "@electron-forge/maker-squirrel": "6.0.0-beta.65",
         "@electron-forge/maker-zip": "6.0.0-beta.65",
-        "@types/node": "18.0.5",
+        "@types/node": "18.6.2",
         "copyfiles": "2.4.1",
         "electron": "19.0.10",
         "rimraf": "3.0.2",
@@ -50,7 +50,7 @@
         "forge": {
             "packagerConfig": {
                 "name": "Stop Chrome",
-                "icon": "icon.ico",
+                "icon": "assets/icon.ico",
                 "appCopyright": "© Katsute 2022",
                 "ignore": [
                     "^/\\.github",
@@ -64,8 +64,8 @@
                     "name": "@electron-forge/maker-squirrel",
                     "config": {
                         "name": "Stop-Chrome",
-                        "setupIcon": "icon.ico",
-                        "loadingGif": "installer.gif"
+                        "setupIcon": "assets/icon.ico",
+                        "loadingGif": "assets/installer.gif"
                     }
                 },
                 {

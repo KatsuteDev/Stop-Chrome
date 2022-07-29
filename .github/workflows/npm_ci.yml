@@ -10,6 +10,5 @@ jobs:
     name: npm CI
     uses: Katsute/Workflows/.github/workflows/npm.ci.yml@main
     with:
-      os: windows-latest # required for process-list rebuild
       timeout: 20
       test: false

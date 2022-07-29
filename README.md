@@ -21,8 +21,8 @@ Stop Chrome is a desktop application that displays an indicator in the system tr
 
 > ⚠️ Running this application may trigger your Antivirus. This is a FALSE POSITIVE. Add this application to the exception list if you don't want to see alerts.
 
- 1. Download the latest release: [![version](https://img.shields.io/github/v/release/KatsuteDev/Stop-Chrome)](https://github.com/KatsuteDev/Stop-Chrome/releases).
- 2. Either run the installer or extract the zip into the desired directory.
+ 1. Download the latest [release](https://github.com/KatsuteDev/Stop-Chrome/releases).
+ 2. Run the installer or extract the zip into the desired directory.
      - Installer installs into `AppData/Local/Stop-Chrome`.
  3. Run `Stop Chrome.exe`.
 

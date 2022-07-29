@@ -12,10 +12,12 @@ Google Chrome has an issue where when you close it, it still runs in the backgro
 Stop Chrome is a desktop application that displays an indicator in the system tray, telling you whether Chrome is running or not, and allows you to quickly stop chrome running in the background.
 
 <div align="center">
-    <img src="https://raw.githubusercontent.com/KatsuteDev/Stop-Chrome/main/assets/sample.png">
+    <a href="https://github.com/KatsuteDev/Stop-Chrome#readme">
+        <img src="https://raw.githubusercontent.com/KatsuteDev/Stop-Chrome/main/assets/sample.png">
+    </a>
 </div>
 
-## 📃 Installation
+### 📃 Installation
 
 > ⚠️ Running this application may trigger your Antivirus. This is a FALSE POSITIVE. Add this application to the exception list if you don't want to see alerts.
 

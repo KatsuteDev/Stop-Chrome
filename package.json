@@ -41,7 +41,7 @@
         "copyfiles": "2.4.1",
         "electron": "20.1.2",
         "rimraf": "3.0.2",
-        "typescript": "4.8.2"
+        "typescript": "4.8.3"
     },
     "dependencies": {
         "electron-squirrel-startup": "1.0.0"

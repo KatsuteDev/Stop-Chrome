@@ -1,5 +1,5 @@
 {
     "image": "node:18",
-    "onCreateCommand": "npm i",
+    "postAttachCommand": "npm i",
     "shutdownAction": "stopContainer"
 }

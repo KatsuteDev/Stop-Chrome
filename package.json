@@ -32,7 +32,7 @@
     },
     "homepage": "https://github.com/KatsuteDev/Stop-Chrome#readme",
     "devDependencies": {
-        "@electron-forge/cli": "6.0.4",
+        "@electron-forge/cli": "6.0.5",
         "@electron-forge/maker-squirrel": "6.0.4",
         "@electron-forge/maker-zip": "6.0.5",
         "@types/node": "18.11.10",

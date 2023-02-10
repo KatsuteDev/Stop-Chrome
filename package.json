@@ -31,6 +31,9 @@
         "url": "https://github.com/KatsuteDev/Stop-Chrome/issues"
     },
     "homepage": "https://github.com/KatsuteDev/Stop-Chrome#readme",
+    "dependencies": {
+        "electron-squirrel-startup": "1.0.0"
+    },
     "devDependencies": {
         "@electron-forge/cli": "6.0.5",
         "@electron-forge/maker-squirrel": "6.0.5",
@@ -41,15 +44,12 @@
         "rimraf": "3.0.2",
         "typescript": "4.9.5"
     },
-    "dependencies": {
-        "electron-squirrel-startup": "1.0.0"
-    },
     "config": {
         "forge": {
             "packagerConfig": {
                 "name": "Stop Chrome",
                 "icon": "assets/icon.ico",
-                "appCopyright": "© Katsute 2022",
+                "appCopyright": "Copyright © Katsute 2023",
                 "ignore": [
                     "^/\\.github",
                     "^/src",

@@ -1,6 +1,6 @@
 {
     "name": "stop-chrome",
-    "version": "2.0.7",
+    "version": "2.0.8",
     "description": "Detect and stop chrome from running in the background",
     "private": true,
     "main": "dist/main.js",
@@ -40,7 +40,7 @@
         "@electron-forge/maker-zip": "6.0.5",
         "@types/node": "18.13.0",
         "copyfiles": "2.4.1",
-        "electron": "22.2.0",
+        "electron": "22.3.0",
         "rimraf": "3.0.2",
         "typescript": "4.9.5"
     },
@@ -51,6 +51,7 @@
                 "icon": "assets/icon.ico",
                 "appCopyright": "Copyright © Katsute 2023",
                 "ignore": [
+                    "^/\\.devcontainer",
                     "^/\\.github",
                     "^/src",
                     "^/tsconfig.json",

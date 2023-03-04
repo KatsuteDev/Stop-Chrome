@@ -6,7 +6,7 @@
     "main": "dist/main.js",
     "scripts": {
         "// -- dev -- //": "",
-        "clean": "rimraf dist & rimraf out",
+        "clean": "rimraf --glob dist & rimraf --glob out",
         "prune": "npm prune && npm i --package-lock --ignore-scripts",
         "update": "npm update -D && npm i --package-lock --ignore-scripts && npm run prune",
         "// -- build -- //": "",

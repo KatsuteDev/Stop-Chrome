@@ -1,6 +1,6 @@
 {
     "name": "stop-chrome",
-    "version": "2.0.8",
+    "version": "2.0.9",
     "description": "Detect and stop chrome from running in the background",
     "private": true,
     "main": "dist/main.js",

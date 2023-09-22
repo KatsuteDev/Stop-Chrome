@@ -32,7 +32,6 @@ type process = {
 // ----- main ---------------
 
 const name: string = "Stop Chrome";
-const version: string = "2.0.13";
 
 const icon : string = path.join(__dirname, "../", "assets", "icon.png");
 const green: string = path.join(__dirname, "../", "assets", "state_green.png");
@@ -61,7 +60,7 @@ abstract class Main {
             Main.tray.on("mouse-move", Main.checkChromeProcess);
             Main.tray.setContextMenu(Main.menu = Menu.buildFromTemplate([
                 {
-                    label: `${name} v${version}`,
+                    label: `${name}`,
                     type: "normal",
                     icon: nativeImage.createFromPath(icon).resize({width: 16, height: 16}),
                     enabled: false

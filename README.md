@@ -1,3 +1,11 @@
+<table align="center">
+    <tr>
+        <td>
+            <div align="center">⚠️ This application has reached the end of its service life and will no longer receive updates ⚠️</div>
+        </td>
+    </tr>
+</table>
+
 <div align="center">
     <a href="https://github.com/KatsuteDev/Stop-Chrome#readme">
         <img src="https://raw.githubusercontent.com/KatsuteDev/Stop-Chrome/main/assets/icon.png" alt="Stop Chrome" width="100" height="100">
